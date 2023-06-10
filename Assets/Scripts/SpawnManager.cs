@@ -75,7 +75,7 @@ public class SpawnManager : MonoBehaviour
 
         var boss = Instantiate(bossPrefab, GenerateSpawnPosition(),
         bossPrefab.transform.rotation);
-        boss.GetComponent<Enemy>().miniEnemySpawnCount = miniEnemysToSpawn;
+        boss.GetComponent<EnemyBoss>().miniEnemySpawnCount = miniEnemysToSpawn;
     }
 
     public void SpawnMiniEnemy(int enemiesToSpawn)

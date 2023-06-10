@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3092137887511265724}
   - component: {fileID: 3092137887511265725}
   - component: {fileID: 3092137887511265722}
-  - component: {fileID: 3092137887511265665}
+  - component: {fileID: 1256487778856570711}
   m_Layer: 0
   m_Name: MiniEnemyFast
   m_TagString: Enemy
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3092137887511265665
+--- !u!114 &1256487778856570711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,5 +128,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  isBoss: 0
-  miniEnemySpawnCount: 0

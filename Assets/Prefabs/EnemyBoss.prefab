@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8517270439862575290}
   - component: {fileID: 8517270439862575291}
   - component: {fileID: 8517270439862575292}
-  - component: {fileID: 8517270439862575239}
+  - component: {fileID: 162897329169414101}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Enemy
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8517270439862575239
+--- !u!114 &162897329169414101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,9 +124,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8517270439862575293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b3a154d3fd125cf8a0c33f2cc9a05d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a6c6010689a74385b4c31881ba9832b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  isBoss: 1
   miniEnemySpawnCount: 0
