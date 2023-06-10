@@ -14,18 +14,17 @@ public class Target : MonoBehaviour
     [SerializeField] private int pointValue = 1;
     [SerializeField] private ParticleSystem explosionParticle;
 
-    void Start()
+    void Awake()
     {
         targetRb = GetComponent<Rigidbody>();
-        targetRb.AddForce(RandomForce(), ForceMode.Impulse);
-        targetRb.AddTorque(RandomTorque(), ForceMode.Impulse);
-        transform.position = RandomSpawnPos();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    void Update()
+    void Start()
     {
-
+        targetRb.AddForce(RandomForce(), ForceMode.Impulse);
+        targetRb.AddTorque(RandomTorque(), ForceMode.Impulse);
+        transform.position = RandomSpawnPos();
     }
 
     // private void OnMouseDown()

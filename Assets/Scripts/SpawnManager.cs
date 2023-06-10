@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] private List<GameObject> targets;
 
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
