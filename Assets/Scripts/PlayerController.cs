@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private GameManager gameManager;
-    [SerializeField] private float speed = 20.0f;
+    [SerializeField] private float speed = 10.0f;
     [SerializeField] GameObject projectilePrefab;
 
     void Start()

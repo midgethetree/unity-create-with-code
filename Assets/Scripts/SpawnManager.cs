@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> animalPrefabs;
-    private float spawnRate = 1.5f;
-    private float spawnRangeX = 20.0f;
+    private float spawnRate = 2.0f;
+    private float spawnRangeX = 10.0f;
     private float spawnPosZ = 20.0f;
     private float spawnMinZ = 6.0f;
     private float spawnMaxZ = 16.0f;
@@ -30,10 +30,7 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
 
             Vector3 spawnPos = new Vector3();
-            int direction = Random.Range(0, 4);
-            if (direction == 3) {
-                direction = 1;
-            }
+            int direction = Random.Range(0, 3);
             Quaternion rotation = Quaternion.Euler(0, 90 + direction * 90, 0);
 
             if (direction == 0)
