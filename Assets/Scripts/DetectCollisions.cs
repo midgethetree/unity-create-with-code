@@ -22,6 +22,7 @@ public class DetectCollisions : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gameManager.LoseLife();
+            other.GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
         else if (other.CompareTag("Apple"))
