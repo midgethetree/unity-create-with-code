@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
             float delayElapsed = Time.time + startDelay - walkTime;
 
             transform.position = Vector3.Lerp(startingPosition, startingPosition + new Vector3(startOffset, 0, 0), delayElapsed / startDelay);
-            playerAnim.SetFloat("Speed_f", 0.5f + (0.5f * delayElapsed / startDelay));
+            playerAnim.SetFloat("Speed_f", 0.25f + (0.75f * delayElapsed / startDelay));
 
             yield return null;
         }
