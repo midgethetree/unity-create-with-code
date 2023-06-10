@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
         playerAudio = GetComponent<AudioSource>();
         startingPosition = transform.position;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
-        StartCoroutine(WalkIntoScene());
     }
 
     void Update()
@@ -90,6 +88,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void StartRunning()
+    {
+        StartCoroutine(WalkIntoScene());
+    }
+
     IEnumerator WalkIntoScene()
     {
         float walkTime = Time.time + startDelay;
@@ -97,14 +100,16 @@ public class PlayerController : MonoBehaviour
         while (Time.time < walkTime)
         {
             float delayElapsed = Time.time + startDelay - walkTime;
+
             transform.position = Vector3.Lerp(startingPosition, startingPosition + new Vector3(startOffset, 0, 0), delayElapsed / startDelay);
             playerAnim.SetFloat("Speed_f", 0.5f + (0.5f * delayElapsed / startDelay));
-            yield return null;
 
+            yield return null;
         }
 
         transform.position = startingPosition + new Vector3(startOffset, 0, 0);
         playerAnim.SetFloat("Speed_f", 1.0f);
-        gameManager.StartGame();
+
+        gameManager.SetGameActive();
     }
 }

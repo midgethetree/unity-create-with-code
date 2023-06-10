@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
 {
     private float score = 0;
     private bool isPaused = false;
+    [SerializeField] private PlayerController player;
     [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject pauseScreen;
     public bool isGameActive = false;
@@ -39,6 +41,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame()
+    {
+        titleScreen.SetActive(false);
+        UpdateScore(0.0f);
+        player.StartRunning();
+    }
+
+    public void SetGameActive()
     {
         isGameActive = true;
         spawnManager.SpawnObstacles();
