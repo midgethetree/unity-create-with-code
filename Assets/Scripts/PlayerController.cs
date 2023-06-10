@@ -18,9 +18,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float rpm;
 
-    void Start()
+    void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
+    }
+
+    void Start()
+    {
         playerRb.centerOfMass = centerOfMass.transform.localPosition;
     }
 
