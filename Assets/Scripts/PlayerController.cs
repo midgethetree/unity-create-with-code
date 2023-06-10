@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject powerupIndicator;
     [SerializeField] private GameObject rocketPrefab;
 
-    void Start()
+    void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");

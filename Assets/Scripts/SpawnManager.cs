@@ -14,9 +14,13 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private List<GameObject> miniEnemyPrefabs;
 
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
+
+    void Start()
+    {
         SpawnEnemyWave(waveNumber);
         SpawnPowerup();
     }

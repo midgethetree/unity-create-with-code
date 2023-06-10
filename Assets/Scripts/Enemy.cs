@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool isBoss = false;
     public int miniEnemySpawnCount = 0;
 
-    void Start()
+    void Awake()
     {
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
@@ -21,6 +21,13 @@ public class Enemy : MonoBehaviour
         if (isBoss)
         {
             spawnManager = FindObjectOfType<SpawnManager>();
+        }
+    }
+
+    void Start()
+    {
+        if (isBoss)
+        {
             nextSpawn = Time.time + spawnInterval;
         }
     }
