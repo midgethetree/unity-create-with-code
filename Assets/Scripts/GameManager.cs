@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     private bool isPaused = false;
     [SerializeField] private int lives = 3;
+    [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject pauseScreen;
-    public bool isGameActive = true;
+    public bool isGameActive = false;
 
     void Update()
     {
@@ -51,6 +53,14 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.SetText("Score: " + score);
+    }
+
+    public void StartGame()
+    {
+        titleScreen.SetActive(false);
+        UpdateScore(0);
+        isGameActive = true;
+        spawnManager.SpawnAnimals();
     }
 
     private void GameOver()

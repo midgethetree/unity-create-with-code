@@ -16,6 +16,10 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
+
+    public void SpawnAnimals()
+    {
         StartCoroutine(SpawnRandomAnimal());
     }
 
