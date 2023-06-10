@@ -141,8 +141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  projectilePrefab: {fileID: 2374848780143370133, guid: 5dde06fbd1d387a50a50e3a21f56f480, type: 3}
-  hurtSound: {fileID: 8300000, guid: c48a2cb005c3740479e41b9df734b2ad, type: 3}
 --- !u!65 &28618764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1445,7 +1443,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 606910ec401804eb09925f0d57909c04, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 27404163c8cfe425e8e26c911c1acde2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
