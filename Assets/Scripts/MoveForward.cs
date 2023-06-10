@@ -10,7 +10,7 @@ public class MoveForward : MonoBehaviour
     private float sideBound = 30.0f;
     [SerializeField] private float speed = 5.0f;
 
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }

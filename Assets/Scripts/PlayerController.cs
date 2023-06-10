@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] private float speed = 10.0f;
 
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }

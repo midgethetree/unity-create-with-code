@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnPosX = 20.0f;
     private GameManager gameManager;
 
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }

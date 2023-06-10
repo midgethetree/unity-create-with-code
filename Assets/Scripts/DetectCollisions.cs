@@ -10,11 +10,15 @@ public class DetectCollisions : MonoBehaviour
     [SerializeField] private int amountToBeFed = 2;
     [SerializeField] private Slider hungerSlider;
 
+    void Awake()
+    {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
+
     void Start()
     {
         hunger = amountToBeFed;
         hungerSlider.maxValue = amountToBeFed;
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
