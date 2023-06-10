@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2374848780142908533}
   - component: {fileID: 2374848780140124007}
   - component: {fileID: 2374848780141133987}
-  - component: {fileID: 2374848781242982790}
-  - component: {fileID: 666821193022394789}
   - component: {fileID: 576963283889904626}
+  - component: {fileID: 666821193022394789}
+  - component: {fileID: 2374848781242982790}
   m_Layer: 0
   m_Name: Food_Organic_Apple_03
   m_TagString: Apple
@@ -86,32 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2374848781242982790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2374848780143370133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8d863c20076e97fa626e3c9237dc70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 40
---- !u!65 &666821193022394789
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2374848780143370133}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.36, z: 0.4}
-  m_Center: {x: 0, y: 0.18, z: 0}
 --- !u!54 &576963283889904626
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +102,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &666821193022394789
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2374848780143370133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.36, z: 0.4}
+  m_Center: {x: 0, y: 0.18, z: 0}
+--- !u!114 &2374848781242982790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2374848780143370133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8d863c20076e97fa626e3c9237dc70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 40

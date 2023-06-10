@@ -650,8 +650,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6784162226979328115}
   - component: {fileID: 6784162226970160983}
-  - component: {fileID: 6784162226209822754}
   - component: {fileID: 103432042973341530}
+  - component: {fileID: 6784162226209822754}
   - component: {fileID: 8628790126403262630}
   m_Layer: 0
   m_Name: Animal_Horse_Black
@@ -703,19 +703,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6784162226209822754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6784162226979571011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8d863c20076e97fa626e3c9237dc70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!65 &103432042973341530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -729,6 +716,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13, y: 38, z: 45}
   m_Center: {x: 0, y: 19, z: 4}
+--- !u!114 &6784162226209822754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6784162226979571011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8d863c20076e97fa626e3c9237dc70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!114 &8628790126403262630
 MonoBehaviour:
   m_ObjectHideFlags: 0
