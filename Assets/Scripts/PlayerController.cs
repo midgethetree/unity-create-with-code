@@ -22,14 +22,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip crashSound;
     public float speed = 1.0f;
 
-    void Start()
+    void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
-        Physics.gravity *= gravityModifier;
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         startingPosition = transform.position;
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+    }
+
+    void Start()
+    {
+        Physics.gravity *= gravityModifier;
     }
 
     void Update()

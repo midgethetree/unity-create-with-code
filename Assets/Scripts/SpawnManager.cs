@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] private List<GameObject> obstaclePrefabs;
 
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }

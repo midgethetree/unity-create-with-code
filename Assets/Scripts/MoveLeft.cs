@@ -9,7 +9,7 @@ public class MoveLeft : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] private float speed = 30.0f;
 
-    void Start()
+    void Awake()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
