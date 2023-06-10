@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnim;
     private AudioSource playerAudio;
     private GameManager gameManager;
-    [SerializeField] private float jumpForce = 700.0f;
-    [SerializeField] private float doubleJumpForce = 140.0f;
+    [SerializeField] private float jumpForce = 500.0f;
+    [SerializeField] private float doubleJumpForce = 200.0f;
     [SerializeField] private float gravityModifier = 1.5f;
     [SerializeField] private ParticleSystem explosionParticle;
     [SerializeField] private ParticleSystem dirtParticle;

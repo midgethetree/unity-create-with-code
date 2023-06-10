@@ -2739,8 +2739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d90a7aa3ce0056938332ebfa7f4379d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 700
-  doubleJumpForce: 140
+  jumpForce: 500
+  doubleJumpForce: 200
   gravityModifier: 1.5
   explosionParticle: {fileID: 723839663}
   dirtParticle: {fileID: 1920504268}
