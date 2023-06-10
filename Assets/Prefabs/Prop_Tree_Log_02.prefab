@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6516971095881631339}
   - component: {fileID: 6510559678255144297}
   - component: {fileID: 1465913115764265553}
-  - component: {fileID: 1080879032915970801}
   - component: {fileID: 4847304513523362934}
+  - component: {fileID: 1080879032915970801}
   m_Layer: 0
   m_Name: Prop_Tree_Log_02
   m_TagString: Obstacle
@@ -102,20 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1080879032915970801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6488978517087437133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2162207aa740615baf4e0de71c2271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
-  leftBound: -15
 --- !u!65 &4847304513523362934
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +115,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.55499756, y: 0.69095916, z: 2.3428588}
   m_Center: {x: 0.024699047, y: 0.0032598376, z: 0.20232236}
+--- !u!114 &1080879032915970801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488978517087437133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2162207aa740615baf4e0de71c2271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2892572241611502274}
   - component: {fileID: 2882784424602053660}
   - component: {fileID: 4990389097501521551}
-  - component: {fileID: 528371147202411840}
   - component: {fileID: 738535695610729874}
+  - component: {fileID: 528371147202411840}
   m_Layer: 0
   m_Name: Prob_Rock_Boulder_01
   m_TagString: Obstacle
@@ -102,20 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &528371147202411840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2906072071650245340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2162207aa740615baf4e0de71c2271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
-  leftBound: -15
 --- !u!65 &738535695610729874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +115,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6651044, y: 2.6651044, z: 2.6651044}
   m_Center: {x: 0, y: -0.000000059604645, z: 0}
+--- !u!114 &528371147202411840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906072071650245340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2162207aa740615baf4e0de71c2271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
