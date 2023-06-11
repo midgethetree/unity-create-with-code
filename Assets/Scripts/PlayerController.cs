@@ -6,17 +6,19 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     // Private Variables
+    private float speed;
+    private float rpm;
+    private float horizontalInput;
+    private float forwardInput;
+    private Rigidbody playerRb;
     [SerializeField] private float horsePower = 40000.0f;
     [SerializeField] private float turnSpeed = 15.0f;
     [SerializeField] private GameObject centerOfMass;
     [SerializeField] private TextMeshProUGUI speedometerText;
     [SerializeField] private TextMeshProUGUI rpmText;
     [SerializeField] private List<WheelCollider> allWheels;
-    protected float horizontalInput;
-    protected float forwardInput;
-    protected Rigidbody playerRb;
-    [SerializeField] float speed;
-    [SerializeField] float rpm;
+    [SerializeField] private string horizontalInputAxis;
+    [SerializeField] private string verticalInputAxis;
 
     void Awake()
     {
@@ -31,7 +33,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        GetInput();
+        // This is where we get player input
+        horizontalInput = Input.GetAxis(horizontalInputAxis);
+        forwardInput = Input.GetAxis(verticalInputAxis);
 
         if (IsOnGround())
         {
@@ -53,13 +57,6 @@ public class PlayerController : MonoBehaviour
         speedometerText.SetText("Speed: " + speed + " mph");
         //print RPM
         rpmText.SetText("RPM: " + rpm);
-    }
-
-    protected virtual void GetInput()
-    {
-        // This is where we get player input
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
     }
 
     private bool IsOnGround()

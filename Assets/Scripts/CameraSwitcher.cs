@@ -6,21 +6,15 @@ public class CameraSwitcher : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject POVCamera;
-    [SerializeField] private GameObject mainCamera2;
-    [SerializeField] private GameObject POVCamera2;
+    [SerializeField] private KeyCode key;
 
     // Update is called once per frame
     void Update()
     {
-      if (Input.GetKeyDown(KeyCode.Z))
-        {
-            mainCamera.SetActive(!mainCamera.activeSelf);
-            POVCamera.SetActive(!POVCamera.activeSelf);
-        }
-      if (Input.GetKeyDown(KeyCode.M))
-        {
-            mainCamera2.SetActive(!mainCamera2.activeSelf);
-            POVCamera2.SetActive(!POVCamera2.activeSelf);
-        }
+      if (Input.GetKeyDown(key))
+      {
+          mainCamera.SetActive(!mainCamera.activeSelf);
+          POVCamera.SetActive(!POVCamera.activeSelf);
+      }
     }
 }
