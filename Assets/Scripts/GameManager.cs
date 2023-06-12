@@ -7,8 +7,37 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private int score = 0;
-    private int lives = 3;
+    private int Score
+    {
+        get
+        {
+            return _score;
+        }
+        set
+        {
+            _score = value;
+            scoreText.SetText("Score: " + _score);
+        }
+    }
+    private int _score;
+    private int Lives
+    {
+        get
+        {
+            return _lives;
+        }
+        set
+        {
+            _lives = value;
+            livesText.text = "Lives: " + _lives;
+
+            if (_lives < 1)
+            {
+                GameOver();
+            }
+        }
+    }
+    private int _lives = 3;
     private bool isPaused = false;
     [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -37,29 +66,25 @@ public class GameManager : MonoBehaviour
 
     public void UpdateScore(int scoreToAdd)
     {
-        score += scoreToAdd;
-        scoreText.text = "Score: " + score;
+        if (isGameActive)
+        {
+            Score += scoreToAdd;
+        }
     }
 
     public void LoseLife()
     {
         if (isGameActive)
         {
-            lives -= 1;
-            livesText.text = "Lives: " + lives;
-
-            if (lives < 1)
-            {
-                GameOver();
-            }
+            Lives -= 1;
         }
     }
 
     public void StartGame(int difficulty)
     {
         titleScreen.SetActive(false);
-        UpdateScore(0);
-        livesText.text = "Lives: " + lives;
+        Score = 0;
+        Lives = 3;
         isGameActive = true;
         spawnManager.SpawnTargets(difficulty);
     }
