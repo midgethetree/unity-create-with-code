@@ -7,7 +7,19 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private float score = 0;
+    private float Score
+    {
+        get
+        {
+            return _score;
+        }
+        set
+        {
+            _score = value;
+            scoreText.SetText("Score: " + Mathf.RoundToInt(_score));
+        }
+    }
+    private float _score;
     private bool isPaused = false;
     [SerializeField] private PlayerController player;
     [SerializeField] private SpawnManager spawnManager;
@@ -36,14 +48,16 @@ public class GameManager : MonoBehaviour
 
     public void UpdateScore(float scoreToAdd)
     {
-        score += scoreToAdd;
-        scoreText.SetText("Score: " + Mathf.RoundToInt(score));
+        if (isGameActive)
+        {
+            Score += scoreToAdd;
+        }
     }
 
     public void StartGame()
     {
         titleScreen.SetActive(false);
-        UpdateScore(0.0f);
+        Score = 0.0f;
         player.StartRunning();
     }
 
