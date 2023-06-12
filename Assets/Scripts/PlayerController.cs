@@ -59,14 +59,7 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayOneShot(jumpSound, 1.0f);
             }
 
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                speed = 2.0f;
-            }
-            else
-            {
-                speed = 1.0f;
-            }
+            speed = Input.GetKey(KeyCode.LeftShift)? 2.0f : 1.0f;
             playerAnim.speed = speed;
 
             gameManager.UpdateScore(Time.deltaTime * speed);
