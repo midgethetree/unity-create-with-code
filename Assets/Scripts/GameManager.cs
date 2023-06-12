@@ -53,14 +53,7 @@ public class GameManager : MonoBehaviour
         {
             isPaused = !isPaused;
             pauseScreen.SetActive(isPaused);
-            if (isPaused)
-            {
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
+            Time.timeScale = isPaused? 0 : 1;
         }
     }
 
