@@ -7,9 +7,38 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private int score = 0;
+    private int Score
+    {
+        get
+        {
+            return _score;
+        }
+        set
+        {
+            _score = value;
+            scoreText.SetText("Score: " + _score);
+        }
+    }
+    private int _score;
     private bool isPaused = false;
-    [SerializeField] private int lives = 3;
+    private int Lives
+    {
+        get
+        {
+            return _lives;
+        }
+        set
+        {
+            _lives = value;
+            healthSlider.value = _lives;
+
+            if (_lives < 1)
+            {
+                GameOver();
+            }
+        }
+    }
+    private int _lives = 3;
     [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -35,30 +64,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateScore(int scoreToAdd)
+    {
+        if (isGameActive)
+        {
+            Score += scoreToAdd;
+        }
+    }
+
     public void LoseLife()
     {
         if (isGameActive)
         {
-            lives -= 1;
-            healthSlider.value = lives;
-
-            if (lives < 1)
-            {
-                GameOver();
-            }
+            Lives -= 1;
         }
-    }
-
-    public void UpdateScore(int scoreToAdd)
-    {
-        score += scoreToAdd;
-        scoreText.SetText("Score: " + score);
     }
 
     public void StartGame()
     {
         titleScreen.SetActive(false);
-        UpdateScore(0);
+        Score = 0;
         isGameActive = true;
         spawnManager.SpawnAnimals();
     }
