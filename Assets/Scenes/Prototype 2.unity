@@ -739,7 +739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2556ce8dd65c8de88c48215d9787ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnManager: {fileID: 376028655}
   healthSlider: {fileID: 978028196}
   scoreText: {fileID: 897642581}
   titleScreen: {fileID: 494969636}

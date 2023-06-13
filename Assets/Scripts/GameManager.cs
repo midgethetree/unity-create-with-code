@@ -39,13 +39,16 @@ public class GameManager : MonoBehaviour
         }
     }
     private int _lives = 3;
-    [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject pauseScreen;
     public bool isGameActive = false;
+    public delegate void OnGameStart();
+    public static event OnGameStart onGameStart;
+    public delegate void OnGameOver();
+    public static event OnGameOver onGameOver;
 
     void Update()
     {
@@ -78,13 +81,20 @@ public class GameManager : MonoBehaviour
         titleScreen.SetActive(false);
         Score = 0;
         isGameActive = true;
-        spawnManager.SpawnAnimals();
+        if(onGameStart != null)
+        {
+            onGameStart();
+        }
     }
 
     private void GameOver()
     {
         gameOverScreen.SetActive(true);
         isGameActive = false;
+        if(onGameOver != null)
+        {
+            onGameOver();
+        }
     }
 
     public void RestartGame()
