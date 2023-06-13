@@ -20,18 +20,29 @@ public class GameManager : MonoBehaviour
         }
     }
     private float _score;
-    private bool isPaused = false;
+    private bool isPaused
+    {
+        get
+        {
+            return Time.timeScale == 0? true : false;
+        }
+        set
+        {
+            Time.timeScale = value? 0 : 1;
+        }
+    }
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject pauseScreen;
     public bool isGameActive = false;
-    public delegate void OnGamePreStart();
-    public static event OnGamePreStart onGamePreStart;
     public delegate void OnGameStart();
     public static event OnGameStart onGameStart;
-    public delegate void OnGameOver();
-    public static event OnGameOver onGameOver;
+
+    void Start()
+    {
+        isPaused = true;
+    }
 
     void Update()
     {
@@ -45,20 +56,14 @@ public class GameManager : MonoBehaviour
 
     public void UpdateScore(float scoreToAdd)
     {
-        if (isGameActive)
-        {
-            Score += scoreToAdd;
-        }
+        Score += scoreToAdd;
     }
 
     public void PreStartGame()
     {
         titleScreen.SetActive(false);
         Score = 0.0f;
-        if(onGamePreStart != null)
-        {
-            onGamePreStart();
-        }
+        isPaused = false;
     }
 
     public void StartGame()
@@ -73,11 +78,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
+        isPaused = true;
         isGameActive = false;
-        if(onGameOver != null)
-        {
-            onGameOver();
-        }
     }
 
     public void RestartGame()

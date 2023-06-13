@@ -34,21 +34,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Physics.gravity *= gravityModifier;
-    }
-
-    private void OnEnable()
-    {
-        GameManager.onGamePreStart += StartRunning;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.onGamePreStart -= StartRunning;
+        StartCoroutine(WalkIntoScene());
     }
 
     void Update()
     {
-        if (gameManager.isGameActive)
+        if (Time.timeScale != 0 && gameManager.isGameActive)
         {
             if (Input.GetKeyDown(KeyCode.Space) && canJump)
             {
@@ -93,11 +84,6 @@ public class PlayerController : MonoBehaviour
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSound, 1.0f);
         }
-    }
-
-    public void StartRunning()
-    {
-        StartCoroutine(WalkIntoScene());
     }
 
     IEnumerator WalkIntoScene()
