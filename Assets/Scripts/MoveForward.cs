@@ -17,13 +17,10 @@ public class MoveForward : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (gameManager.isGameActive)
         {
-            Vector3 deltaPosition = transform.TransformDirection(Vector3.forward * Time.fixedDeltaTime * speed);
-            rb.MovePosition(rb.position + deltaPosition);
-
             if (transform.position.z > topBound)
             {
                 gameObject.SetActive(false);
@@ -48,6 +45,15 @@ public class MoveForward : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (gameManager.isGameActive)
+        {
+            Vector3 deltaPosition = transform.TransformDirection(Vector3.forward * Time.fixedDeltaTime * speed);
+            rb.MovePosition(rb.position + deltaPosition);
         }
     }
 }
