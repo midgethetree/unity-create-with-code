@@ -5,19 +5,16 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private float spawnRate = 1.0f;
-    private Coroutine spawnTarget;
     [SerializeField] private List<GameObject> targets;
 
     private void OnEnable()
     {
         GameManager.onGameStart += StartSpawning;
-        GameManager.onGameOver += StopSpawning;
     }
 
     private void OnDisable()
     {
         GameManager.onGameStart -= StartSpawning;
-        GameManager.onGameOver -= StopSpawning;
     }
 
     public void StartSpawning(int difficulty)
@@ -26,15 +23,10 @@ public class SpawnManager : MonoBehaviour
         {
             spawnRate /= difficulty;
         }
-        spawnTarget = StartCoroutine(SpawnTargetRoutine());
+        StartCoroutine(SpawnTarget());
     }
 
-    public void StopSpawning()
-    {
-        StopCoroutine(spawnTarget);
-    }
-
-    IEnumerator SpawnTargetRoutine()
+    IEnumerator SpawnTarget()
     {
         while (true)
         {

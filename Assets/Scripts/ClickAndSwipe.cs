@@ -9,19 +9,17 @@ public class ClickAndSwipe : MonoBehaviour
     private BoxCollider col;
     private TrailRenderer trail;
     private Vector3 mousePos;
-    private GameManager gameManager;
 
     void Awake()
     {
         cam = Camera.main;
         trail = GetComponent<TrailRenderer>();
         col = GetComponent<BoxCollider>();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     void Update()
     {
-        if (gameManager.isGameActive)
+        if (Time.timeScale != 0)
         {
             if (Input.GetMouseButtonDown(0))
             {

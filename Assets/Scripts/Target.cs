@@ -29,7 +29,7 @@ public class Target : MonoBehaviour
 
     // private void OnMouseDown()
     // {
-    //     if (gameManager.isGameActive)
+    //     if (Time.timeScale != 0)
     //     {
     //         Destroy(gameObject);
     //         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
@@ -48,12 +48,9 @@ public class Target : MonoBehaviour
 
     public void DestroyTarget()
     {
-        if (gameManager.isGameActive)
-        {
-            Destroy(gameObject);
-            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-            gameManager.UpdateScore(pointValue);
-        }
+        Destroy(gameObject);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        gameManager.UpdateScore(pointValue);
     }
 
     private Vector3 RandomForce()
