@@ -6,13 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     private float xRange = 20.0f;
     private float zRange = 15.0f;
-    private float horizontalInput;
-    private float verticalInput;
+    private Vector3 input;
+    private Rigidbody playerRb;
     private GameManager gameManager;
     [SerializeField] private float speed = 10.0f;
 
     void Awake()
     {
+        playerRb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
@@ -20,10 +21,17 @@ public class PlayerController : MonoBehaviour
     {
         if (gameManager.isGameActive)
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-            transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
+            input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameObject pooledProjectile = ObjectPooler.SharedInstance.GetPooledObject();
+                if (pooledProjectile != null)
+                {
+                    pooledProjectile.SetActive(true);
+                    pooledProjectile.transform.position = transform.position;
+                }
+            }
 
             if (transform.position.x < -xRange)
             {
@@ -42,16 +50,14 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
             }
+        }
+    }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                GameObject pooledProjectile = ObjectPooler.SharedInstance.GetPooledObject();
-                if (pooledProjectile != null)
-                {
-                    pooledProjectile.SetActive(true);
-                    pooledProjectile.transform.position = transform.position;
-                }
-            }
+    void FixedUpdate()
+    {
+        if (gameManager.isGameActive)
+        {
+            playerRb.MovePosition(transform.position + input * Time.deltaTime * speed);
         }
     }
 }

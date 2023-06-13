@@ -7,19 +7,22 @@ public class MoveForward : MonoBehaviour
     private float topBound = 30.0f;
     private float lowerBound = -10.0f;
     private float sideBound = 30.0f;
+    private Rigidbody rb;
     private GameManager gameManager;
     [SerializeField] private float speed = 5.0f;
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (gameManager.isGameActive)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            Vector3 newPosition = rb.position + transform.TransformDirection(Vector3.forward * Time.deltaTime * speed);
+            rb.MovePosition(newPosition);
 
             if (transform.position.z > topBound)
             {
