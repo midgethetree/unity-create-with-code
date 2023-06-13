@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
+    void Start()
+    {
+        Physics.gravity *= gravityModifier;
+    }
+
     private void OnEnable()
     {
         GameManager.onGamePreStart += StartRunning;
@@ -39,11 +44,6 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         GameManager.onGamePreStart -= StartRunning;
-    }
-
-    void Start()
-    {
-        Physics.gravity *= gravityModifier;
     }
 
     void Update()
