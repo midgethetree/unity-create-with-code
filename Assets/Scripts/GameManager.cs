@@ -8,12 +8,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverScreen;
-    public bool isGameActive = true;
 
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
-        isGameActive = false;
+        Time.timeScale = 0;
     }
 
     public void RestartGame()

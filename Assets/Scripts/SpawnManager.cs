@@ -8,16 +8,10 @@ public class SpawnManager : MonoBehaviour
     private int enemyCount;
     private int waveNumber = 1;
     private int bossWave = 5;
-    private GameManager gameManager;
     [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] private List<GameObject> powerupPrefabs;
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private List<GameObject> miniEnemyPrefabs;
-
-    void Awake()
-    {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-    }
 
     void Start()
     {
@@ -27,7 +21,7 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.isGameActive)
+        if (Time.timeScale != 0)
         {
             enemyCount = FindObjectsOfType<Enemy>().Length;
             if (enemyCount == 0)
@@ -80,14 +74,11 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnMiniEnemy(int enemiesToSpawn)
     {
-        if (gameManager.isGameActive)
+        for(int i = 0; i < enemiesToSpawn; i++)
         {
-            for(int i = 0; i < enemiesToSpawn; i++)
-            {
-                int index = Random.Range(0, miniEnemyPrefabs.Count);
-                Instantiate(miniEnemyPrefabs[index], GenerateSpawnPosition(),
-                miniEnemyPrefabs[index].transform.rotation);
-            }
+            int index = Random.Range(0, miniEnemyPrefabs.Count);
+            Instantiate(miniEnemyPrefabs[index], GenerateSpawnPosition(),
+            miniEnemyPrefabs[index].transform.rotation);
         }
     }
 

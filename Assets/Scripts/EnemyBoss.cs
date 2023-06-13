@@ -22,7 +22,7 @@ public class EnemyBoss : Enemy
 
     void Update()
     {
-        if(Time.time > nextSpawn)
+        if(Time.time > nextSpawn && Time.timeScale != 0)
         {
             nextSpawn = Time.time + spawnInterval;
             spawnManager.SpawnMiniEnemy(miniEnemySpawnCount);

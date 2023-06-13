@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.isGameActive)
+        if (Time.timeScale != 0)
         {
             powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
 
@@ -62,12 +62,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gameManager.isGameActive)
+        if (!isSmashing)
         {
-            if (!isSmashing)
-            {
-                playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
-            }
+            playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
         }
     }
 
