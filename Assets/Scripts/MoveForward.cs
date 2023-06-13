@@ -21,7 +21,7 @@ public class MoveForward : MonoBehaviour
     {
         if (gameManager.isGameActive)
         {
-            Vector3 newPosition = rb.position + transform.TransformDirection(Vector3.forward * Time.deltaTime * speed);
+            Vector3 newPosition = rb.position + transform.TransformDirection(Vector3.forward * Time.fixedDeltaTime * speed);
             rb.MovePosition(newPosition);
 
             if (transform.position.z > topBound)

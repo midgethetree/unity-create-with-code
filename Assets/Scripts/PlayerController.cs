@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameManager.isGameActive)
         {
-            playerRb.MovePosition(transform.position + input * Time.deltaTime * speed);
+            playerRb.MovePosition(transform.position + input * Time.fixedDeltaTime * speed);
         }
     }
 }
