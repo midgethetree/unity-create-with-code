@@ -5,26 +5,38 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private float spawnRate = 1.0f;
-    private GameManager gameManager;
+    private Coroutine spawnTarget;
     [SerializeField] private List<GameObject> targets;
 
-    void Awake()
+    private void OnEnable()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        GameManager.onGameStart += StartSpawning;
+        GameManager.onGameOver += StopSpawning;
     }
 
-    public void SpawnTargets(int difficulty)
+    private void OnDisable()
+    {
+        GameManager.onGameStart -= StartSpawning;
+        GameManager.onGameOver -= StopSpawning;
+    }
+
+    public void StartSpawning(int difficulty)
     {
         if (difficulty > 0)
         {
             spawnRate /= difficulty;
         }
-        StartCoroutine(SpawnTarget());
+        spawnTarget = StartCoroutine(SpawnTargetRoutine());
     }
 
-    IEnumerator SpawnTarget()
+    public void StopSpawning()
     {
-        while (gameManager.isGameActive)
+        StopCoroutine(spawnTarget);
+    }
+
+    IEnumerator SpawnTargetRoutine()
+    {
+        while (true)
         {
             yield return new WaitForSeconds(spawnRate);
             int index = Random.Range(0, targets.Count);

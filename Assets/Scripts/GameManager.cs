@@ -39,13 +39,16 @@ public class GameManager : MonoBehaviour
     }
     private int _lives = 3;
     private bool isPaused = false;
-    [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI livesText;
     [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject pauseScreen;
     public bool isGameActive = false;
+    public delegate void OnGameStart(int difficulty);
+    public static event OnGameStart onGameStart;
+    public delegate void OnGameOver();
+    public static event OnGameOver onGameOver;
 
     void Update()
     {
@@ -79,13 +82,20 @@ public class GameManager : MonoBehaviour
         Score = 0;
         Lives = 3;
         isGameActive = true;
-        spawnManager.SpawnTargets(difficulty);
+        if(onGameStart != null)
+        {
+            onGameStart(difficulty);
+        }
     }
 
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
         isGameActive = false;
+        if(onGameOver != null)
+        {
+            onGameOver();
+        }
     }
 
     public void RestartGame()

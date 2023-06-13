@@ -1366,7 +1366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294d3467d92a926ca9e1874d43b793ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnManager: {fileID: 709800420}
   scoreText: {fileID: 1034348955}
   livesText: {fileID: 589467474}
   titleScreen: {fileID: 1532781178}
