@@ -14,9 +14,9 @@ public class Rocket : MonoBehaviour
     {
         if (targetLocked && target != null)
         {
-        Vector3 direction = (target.transform.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
-        transform.LookAt(target);
+            Vector3 direction = (target.transform.position - transform.position).normalized;
+            transform.position += direction * speed * Time.deltaTime;
+            transform.LookAt(target);
         }
     }
 
