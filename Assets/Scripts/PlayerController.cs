@@ -30,24 +30,24 @@ public class PlayerController : MonoBehaviour
                     pooledProjectile.transform.position = transform.position;
                 }
             }
+        }
 
-            if (transform.position.x < -xRange)
-            {
-                transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
-            }
-            else if (transform.position.x > xRange)
-            {
-                transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
-            }
+        if (transform.position.x < -xRange)
+        {
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x > xRange)
+        {
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
 
-            if (transform.position.z < 0)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-            }
-            else if (transform.position.z > zRange)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
-            }
+        if (transform.position.z < 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        }
+        else if (transform.position.z > zRange)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
         }
     }
 
