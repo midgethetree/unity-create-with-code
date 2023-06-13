@@ -20,14 +20,12 @@ public class EnemyBoss : Enemy
         nextSpawn = Time.time + spawnInterval;
     }
 
-    protected override void Update()
+    void Update()
     {
         if(Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnInterval;
             spawnManager.SpawnMiniEnemy(miniEnemySpawnCount);
         }
-
-        base.Update();
     }
 }

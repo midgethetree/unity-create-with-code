@@ -6,11 +6,18 @@ public enum PowerUpType { None, Pushback, Rockets, Smash }
 
 public class PowerUp : MonoBehaviour
 {
-    [SerializeField] private float speed = 45.0f;
+    private Rigidbody powerupRb;
+    [SerializeField] private Vector3 rotationVelocity = new Vector3(0.0f, 45.0f, 0.0f);
     public PowerUpType powerUpType;
-    
-    void Update()
+
+    void Awake()
     {
-        transform.Rotate(Vector3.up * Time.deltaTime * speed);
+        powerupRb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+        Quaternion deltaRotation = Quaternion.Euler(rotationVelocity * Time.fixedDeltaTime);
+        powerupRb.MoveRotation(powerupRb.rotation * deltaRotation);
     }
 }

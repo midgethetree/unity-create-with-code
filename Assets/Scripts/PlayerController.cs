@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private float explosionForce = 25.0f;
     private float explosionRadius = 25.0f;
     private bool isSmashing = false;
+    private float forwardInput;
     private Rigidbody playerRb;
     private GameObject focalPoint;
     private Coroutine powerupCountdown;
@@ -35,8 +36,7 @@ public class PlayerController : MonoBehaviour
 
             if (!isSmashing)
             {
-                float forwardInput = Input.GetAxis("Vertical");
-                playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+                forwardInput = Input.GetAxis("Vertical");
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -56,6 +56,17 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(gameObject);
                 gameManager.GameOver();
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (gameManager.isGameActive)
+        {
+            if (!isSmashing)
+            {
+                playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
             }
         }
     }

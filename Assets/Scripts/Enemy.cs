@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    protected virtual void Update()
+    void FixedUpdate()
     {
         if (player != null)
         {

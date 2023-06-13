@@ -9,14 +9,24 @@ public class Rocket : MonoBehaviour
     private float duration = 5.0f;
     private bool targetLocked = false;
     private Transform target;
+    private Rigidbody rocketRb;
 
-    void Update()
+    void Awake()
+    {
+        rocketRb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
     {
         if (targetLocked && target != null)
         {
             Vector3 direction = (target.transform.position - transform.position).normalized;
-            transform.position += direction * speed * Time.deltaTime;
-            transform.LookAt(target);
+
+            Vector3 deltaPosition = direction * Time.fixedDeltaTime * speed;
+            rocketRb.MovePosition(rocketRb.position + deltaPosition);
+
+            Quaternion newRotation = Quaternion.LookRotation(direction, Vector3.up);
+            rocketRb.MoveRotation(newRotation);
         }
     }
 
