@@ -42,6 +42,10 @@ public class MoveForward : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else if (CompareTag("Apple"))
+        {
+            gameObject.SetActive(false);
+        }
         else
         {
             Destroy(gameObject);
@@ -50,10 +54,7 @@ public class MoveForward : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gameManager.isGameActive)
-        {
-            Vector3 deltaPosition = transform.TransformDirection(Vector3.forward * Time.fixedDeltaTime * speed);
-            rb.MovePosition(rb.position + deltaPosition);
-        }
+        Vector3 deltaPosition = transform.TransformDirection(Vector3.forward * Time.fixedDeltaTime * speed);
+        rb.MovePosition(rb.position + deltaPosition);
     }
 }

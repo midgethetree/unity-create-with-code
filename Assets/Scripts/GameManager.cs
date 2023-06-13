@@ -7,20 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private int Score
-    {
-        get
-        {
-            return _score;
-        }
-        set
-        {
-            _score = value;
-            scoreText.SetText("Score: " + _score);
-        }
-    }
-    private int _score;
-    private bool isPaused = false;
     private int Lives
     {
         get
@@ -39,16 +25,41 @@ public class GameManager : MonoBehaviour
         }
     }
     private int _lives = 3;
+    private int Score
+    {
+        get
+        {
+            return _score;
+        }
+        set
+        {
+            _score = value;
+            scoreText.SetText("Score: " + _score);
+        }
+    }
+    private int _score;
+    private bool isPaused
+    {
+        get
+        {
+            return Time.timeScale == 0? true : false;
+        }
+        set
+        {
+            Time.timeScale = value? 0 : 1;
+        }
+    }
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject pauseScreen;
     public bool isGameActive = false;
-    public delegate void OnGameStart();
-    public static event OnGameStart onGameStart;
-    public delegate void OnGameOver();
-    public static event OnGameOver onGameOver;
+
+    void Start()
+    {
+        isPaused = true;
+    }
 
     void Update()
     {
@@ -56,45 +67,32 @@ public class GameManager : MonoBehaviour
         {
             isPaused = !isPaused;
             pauseScreen.SetActive(isPaused);
-            Time.timeScale = isPaused? 0 : 1;
-        }
-    }
-
-    public void UpdateScore(int scoreToAdd)
-    {
-        if (isGameActive)
-        {
-            Score += scoreToAdd;
         }
     }
 
     public void LoseLife()
     {
-        if (isGameActive)
-        {
-            Lives -= 1;
-        }
+        Lives -= 1;
+    }
+
+    public void UpdateScore(int scoreToAdd)
+    {
+        Score += scoreToAdd;
     }
 
     public void StartGame()
     {
         titleScreen.SetActive(false);
         Score = 0;
+        isPaused = false;
         isGameActive = true;
-        if(onGameStart != null)
-        {
-            onGameStart();
-        }
     }
 
     private void GameOver()
     {
         gameOverScreen.SetActive(true);
+        isPaused = true;
         isGameActive = false;
-        if(onGameOver != null)
-        {
-            onGameOver();
-        }
     }
 
     public void RestartGame()

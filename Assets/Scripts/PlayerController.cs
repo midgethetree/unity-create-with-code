@@ -8,18 +8,16 @@ public class PlayerController : MonoBehaviour
     private float zRange = 15.0f;
     private Vector3 input;
     private Rigidbody playerRb;
-    private GameManager gameManager;
     [SerializeField] private float speed = 10.0f;
 
     void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     void Update()
     {
-        if (gameManager.isGameActive)
+        if (Time.timeScale != 0)
         {
             input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
@@ -55,9 +53,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gameManager.isGameActive)
-        {
-            playerRb.MovePosition(transform.position + input * Time.fixedDeltaTime * speed);
-        }
+        playerRb.MovePosition(transform.position + input * Time.fixedDeltaTime * speed);
     }
 }

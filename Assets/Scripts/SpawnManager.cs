@@ -10,32 +10,14 @@ public class SpawnManager : MonoBehaviour
     private float spawnMinZ = 6.0f;
     private float spawnMaxZ = 16.0f;
     private float spawnPosX = 20.0f;
-    private Coroutine spawnAnimal;
     [SerializeField] private List<GameObject> animalPrefabs;
 
-    private void OnEnable()
+    private void Start()
     {
-        GameManager.onGameStart += StartSpawning;
-        GameManager.onGameOver += StopSpawning;
+        StartCoroutine(SpawnAnimal());
     }
 
-    private void OnDisable()
-    {
-        GameManager.onGameStart -= StartSpawning;
-        GameManager.onGameOver -= StopSpawning;
-    }
-
-    public void StartSpawning()
-    {
-        spawnAnimal = StartCoroutine(SpawnAnimalRoutine());
-    }
-
-    public void StopSpawning()
-    {
-        StopCoroutine(spawnAnimal);
-    }
-
-    IEnumerator SpawnAnimalRoutine()
+    IEnumerator SpawnAnimal()
     {
         while (true)
         {
