@@ -31,6 +31,16 @@ public class PlayerController : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
+    private void OnEnable()
+    {
+        GameManager.onGamePreStart += StartRunning;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onGamePreStart -= StartRunning;
+    }
+
     void Start()
     {
         Physics.gravity *= gravityModifier;
@@ -107,6 +117,6 @@ public class PlayerController : MonoBehaviour
         transform.position = startingPosition + new Vector3(startOffset, 0, 0);
         playerAnim.SetFloat("Speed_f", 1.0f);
 
-        gameManager.SetGameActive();
+        gameManager.StartGame();
     }
 }

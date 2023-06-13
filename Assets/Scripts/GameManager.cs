@@ -21,13 +21,17 @@ public class GameManager : MonoBehaviour
     }
     private float _score;
     private bool isPaused = false;
-    [SerializeField] private PlayerController player;
-    [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private GameObject pauseScreen;
     public bool isGameActive = false;
+    public delegate void OnGamePreStart();
+    public static event OnGamePreStart onGamePreStart;
+    public delegate void OnGameStart();
+    public static event OnGameStart onGameStart;
+    public delegate void OnGameOver();
+    public static event OnGameOver onGameOver;
 
     void Update()
     {
@@ -47,23 +51,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public void PreStartGame()
     {
         titleScreen.SetActive(false);
         Score = 0.0f;
-        player.StartRunning();
+        if(onGamePreStart != null)
+        {
+            onGamePreStart();
+        }
     }
 
-    public void SetGameActive()
+    public void StartGame()
     {
         isGameActive = true;
-        spawnManager.SpawnObstacles();
+        if(onGameStart != null)
+        {
+            onGameStart();
+        }
     }
 
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
         isGameActive = false;
+        if(onGameOver != null)
+        {
+            onGameOver();
+        }
     }
 
     public void RestartGame()

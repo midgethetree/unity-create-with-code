@@ -6,22 +6,34 @@ public class SpawnManager : MonoBehaviour
 {
     private Vector3 spawnPos = new Vector3(25, 0, 0);
     private float spawnRate = 2.0f;
-    private GameManager gameManager;
+    private Coroutine spawnObstacle;
     [SerializeField] private List<GameObject> obstaclePrefabs;
 
-    void Awake()
+    private void OnEnable()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        GameManager.onGameStart += StartSpawning;
+        GameManager.onGameOver += StopSpawning;
     }
 
-    public void SpawnObstacles()
+    private void OnDisable()
     {
-        StartCoroutine(SpawnObstacle());
+        GameManager.onGameStart -= StartSpawning;
+        GameManager.onGameOver -= StopSpawning;
     }
 
-    IEnumerator SpawnObstacle()
+    public void StartSpawning()
     {
-        while (gameManager.isGameActive)
+        spawnObstacle = StartCoroutine(SpawnObstacleRoutine());
+    }
+
+    public void StopSpawning()
+    {
+        StopCoroutine(spawnObstacle);
+    }
+
+    IEnumerator SpawnObstacleRoutine()
+    {
+        while (true)
         {
             yield return new WaitForSeconds(spawnRate);
             int index = Random.Range(0, obstaclePrefabs.Count);
