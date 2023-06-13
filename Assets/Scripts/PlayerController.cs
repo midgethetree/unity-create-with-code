@@ -108,14 +108,17 @@ public class PlayerController : MonoBehaviour
         {
             float delayElapsed = (Time.time + startDelay - walkTime)/startDelay;
 
-            transform.position = Vector3.Lerp(startingPosition, startingPosition + new Vector3(startOffset, 0, 0), delayElapsed);
+            Vector3 newPosition = Vector3.Lerp(startingPosition, startingPosition + new Vector3(startOffset, 0, 0), delayElapsed);
+            playerRb.MovePosition(newPosition);
             playerAnim.SetFloat("Speed_f", Mathf.Lerp(0.25f, 1.0f, delayElapsed));
 
             yield return null;
         }
 
-        transform.position = startingPosition + new Vector3(startOffset, 0, 0);
+        playerRb.MovePosition(startingPosition + new Vector3(startOffset, 0, 0));
         playerAnim.SetFloat("Speed_f", 1.0f);
+
+        playerRb.constraints = playerRb.constraints | RigidbodyConstraints.FreezePositionX;
 
         gameManager.StartGame();
     }
