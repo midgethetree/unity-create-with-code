@@ -16,6 +16,14 @@ public class Rocket : MonoBehaviour
         rocketRb = GetComponent<Rigidbody>();
     }
 
+    void Update()
+    {
+        if (targetLocked && target == null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void FixedUpdate()
     {
         if (targetLocked && target != null)
