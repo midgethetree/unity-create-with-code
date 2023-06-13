@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
-
 {
     private float spawnRate = 1.0f;
     private GameManager gameManager;

@@ -8,8 +8,8 @@ public class ClickAndSwipe : MonoBehaviour
     private Camera cam;
     private BoxCollider col;
     private TrailRenderer trail;
-    private GameManager gameManager;
     private Vector3 mousePos;
+    private GameManager gameManager;
 
     void Awake()
     {
