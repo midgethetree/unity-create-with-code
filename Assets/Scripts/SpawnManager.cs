@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> animalPrefabs;
     private float spawnRate = 2.0f;
     private float spawnRangeX = 10.0f;
     private float spawnPosZ = 20.0f;
@@ -12,6 +11,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnMaxZ = 16.0f;
     private float spawnPosX = 20.0f;
     private GameManager gameManager;
+    [SerializeField] private List<GameObject> animalPrefabs;
 
     void Awake()
     {

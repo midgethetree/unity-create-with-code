@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    private GameManager gameManager;
     private float topBound = 30.0f;
     private float lowerBound = -10.0f;
     private float sideBound = 30.0f;
+    private GameManager gameManager;
 
     void Awake()
     {
