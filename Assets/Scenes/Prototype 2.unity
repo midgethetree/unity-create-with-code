@@ -1440,6 +1440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 589967766}
   - component: {fileID: 589967767}
+  - component: {fileID: 589967768}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1521,7 +1522,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 904697221}
+      - m_Target: {fileID: 589967768}
         m_TargetAssemblyTypeName: VolumeController, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 1
@@ -1533,6 +1534,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &589967768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589967765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a205af4d41473380eac11c2ce3924df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &603222869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +1932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 904697220}
   - component: {fileID: 904697222}
-  - component: {fileID: 904697221}
+  - component: {fileID: 904697223}
   m_Layer: 0
   m_Name: Background Music
   m_TagString: Untagged
@@ -1942,19 +1955,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &904697221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904697219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a205af4d41473380eac11c2ce3924df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 589967767}
 --- !u!82 &904697222
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2051,6 +2051,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &904697223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904697219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f55bcf7ccf2eff09ba9ea948535418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &978028196 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4349052174282482358, guid: d42ab255318ebb72793734481b82c869, type: 3}
