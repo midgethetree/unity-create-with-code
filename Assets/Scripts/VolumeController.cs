@@ -5,15 +5,20 @@ using UnityEngine.UI;
 
 public class VolumeController : MonoBehaviour
 {
+    private Slider volumeSlider;
     private AudioSource music;
-    [SerializeField] private Slider volumeSlider;
 
     void Awake()
     {
-        music = GetComponent<AudioSource>();
+        volumeSlider = GetComponent<Slider>();
+    }
+
+    void Start()
+    {
+        music = BackgroundMusic.instance.GetComponent<AudioSource>();
         float volume = PlayerPrefs.GetFloat("volume", 1.0f);
-        music.volume = volume;
         volumeSlider.value = volume;
+        music.volume = volumeSlider.value;
     }
 
     public void ChangeVolume()
